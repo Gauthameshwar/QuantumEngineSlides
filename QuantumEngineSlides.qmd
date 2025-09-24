@@ -1,0 +1,237 @@
+---
+title: "Quantum Thermal Machines — 12-min Sprint"
+author: "Your Name"
+format:
+  revealjs:
+    theme: simple    # swap: simple, serif, beige, night
+    transition: fade
+    slide-number: true
+    controls: true
+    progress: true
+    hash: true
+    auto-animate: true
+    center: true
+    width: 1280
+    height: 720
+    code-fold: false
+    code-copy: true
+    chalkboard: false
+    # math: mathjax|katex (MathJax by default)
+    # incremental lists via fragment classes
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+## Title
+
+::: {.slide data-auto-animate="true" auto-animate-unmatched="fade"}
+### Quantum Thermal Machines
+#### Heat → Work at the quantum scale
+
+- Engines, fridges, and **limits**.
+- Smooth morphs to compare cycles & equations.
+:::
+
+---
+
+## {auto-animate=true}
+### Equation morph
+
+<div style="font-size:140%;">
+  <span data-id="H">$H$</span>=
+  <span data-id="p">$\frac{p^2}{2m}$</span> +
+  <span data-id="x">$\tfrac12 m\omega^2 x^2$</span>
+</div>
+
+---
+
+## {auto-animate=true}
+### Equation morph (add coupling)
+
+<div style="font-size:140%;">
+  <span data-id="H" style="color:#2780e3;">$H'$</span>=
+  <span data-id="p">$\frac{p^2}{2m}$</span> +
+  <span data-id="x">$\tfrac12 m\omega^2 x^2$</span> +
+  <span data-id="g" class="fragment fade-up">$g\,\sigma_x x$</span>
+</div>
+
+---
+
+## Equation morph: Hamiltonian → Driven → Master equation
+
+::: {.slide data-auto-animate="true"}
+### Model
+<div data-id="eq">
+$$
+\hat H_0 = \frac{\hbar\omega_0}{2}\,\hat\sigma_z
+$$
+</div>
+
+<div data-id="note" class="fragment">
+Bare qubit as working medium.
+</div>
+:::
+
+::: {.slide data-auto-animate="true"}
+### Model (driven)
+<div data-id="eq">
+$$
+\hat H(t) = \frac{\hbar\omega_0}{2}\hat\sigma_z + \hbar\Omega\cos(\nu t)\,\hat\sigma_x
+$$
+</div>
+
+<div data-id="note" class="fragment">
+Drive couples energy levels to control **work strokes**.
+</div>
+:::
+
+::: {.slide data-auto-animate="true"}
+### Open system
+<div data-id="eq">
+$$
+\dot\rho = -\frac{i}{\hbar}[\hat H(t),\rho] \;+\; \sum_{\ell\in\{h,c\}}\gamma_\ell\,\mathcal{D}[\hat L_\ell]\rho
+$$
+</div>
+
+<div data-id="note" class="fragment">
+Hot/cold baths mediate **heat strokes** via dissipators.
+</div>
+:::
+
+---
+
+## Cycle morph: Otto → Continuous engine
+
+::: {.slide data-auto-animate="true"}
+### Otto cycle (sketch)
+<svg viewBox="0 0 600 300" width="100%" height="260" data-id="cycle">
+  <!-- Why: use stable IDs so arrows morph cleanly -->
+  <circle id="S1" cx="120" cy="150" r="22" stroke="black" fill="none"/>
+  <text x="120" y="155" text-anchor="middle" font-size="14">1</text>
+  <circle id="S2" cx="260" cy="90" r="22" stroke="black" fill="none"/>
+  <text x="260" y="95" text-anchor="middle" font-size="14">2</text>
+  <circle id="S3" cx="400" cy="150" r="22" stroke="black" fill="none"/>
+  <text x="400" y="155" text-anchor="middle" font-size="14">3</text>
+  <circle id="S4" cx="260" cy="210" r="22" stroke="black" fill="none"/>
+  <text x="260" y="215" text-anchor="middle" font-size="14">4</text>
+
+  <path id="w12" d="M142,145 C190,110 230,100 238,96" fill="none" stroke="black" marker-end="url(#a)"/>
+  <path id="q23" d="M282,92 C330,110 360,130 378,140" fill="none" stroke="black" marker-end="url(#a)"/>
+  <path id="w34" d="M382,160 C340,190 300,210 282,208" fill="none" stroke="black" marker-end="url(#a)"/>
+  <path id="q41" d="M238,204 C200,180 160,160 142,155" fill="none" stroke="black" marker-end="url(#a)"/>
+
+  <text id="W" x="200" y="60">Work strokes</text>
+  <text id="Qh" x="450" y="120">Q<sub>h</sub></text>
+  <text id="Qc" x="450" y="190">Q<sub>c</sub></text>
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" />
+    </marker>
+  </defs>
+</svg>
+:::
+
+::: {.slide data-auto-animate="true"}
+### Continuous engine (sketch)
+<svg viewBox="0 0 600 300" width="100%" height="260" data-id="cycle">
+  <!-- Positions/labels morph; same IDs retained -->
+  <circle id="S1" cx="120" cy="80" r="22" stroke="black" fill="none"/>
+  <text x="120" y="85" text-anchor="middle" font-size="14">g</text>
+  <circle id="S2" cx="300" cy="80" r="22" stroke="black" fill="none"/>
+  <text x="300" y="85" text-anchor="middle" font-size="14">e</text>
+  <circle id="S3" cx="480" cy="80" r="22" stroke="black" fill="none"/>
+  <text x="480" y="85" text-anchor="middle" font-size="14">r</text>
+
+  <path id="w12" d="M142,80 L278,80" fill="none" stroke="black" marker-end="url(#a)"/>
+  <path id="q23" d="M322,80 L458,80" fill="none" stroke="black" marker-end="url(#a)"/>
+  <path id="w34" d="M478,104 C430,200 190,200 140,104" fill="none" stroke="black" marker-end="url(#a)"/>
+  <path id="q41" d="M140,56 C300,20 460,20 480,56" fill="none" stroke="black" marker-end="url(#a)"/>
+
+  <text id="W" x="260" y="150">Stimulated work channel</text>
+  <text id="Qh" x="520" y="120">Hot bath</text>
+  <text id="Qc" x="520" y="200">Cold bath</text>
+
+  <defs>
+    <marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" />
+    </marker>
+  </defs>
+</svg>
+:::
+
+---
+
+## First-law accounting (highlight morph)
+
+::: {.slide data-auto-animate="true"}
+<div data-id="fl">
+$$
+\Delta E = W + Q_h - Q_c
+$$
+</div>
+:::
+
+::: {.slide data-auto-animate="true"}
+<div data-id="fl">
+$$
+\underbrace{\Delta E}_{\approx 0 \text{ over cycle}} =
+\color{#2b8a3e}{W} + 
+\color{#d9480f}{Q_h} -
+\color{#1c7ed6}{Q_c}
+$$
+</div>
+:::
+
+---
+
+## Performance
+
+::: {.slide data-auto-animate="true"}
+### Efficiency
+<div data-id="eta">
+$$
+\eta = \frac{W}{Q_h}
+$$
+</div>
+:::
+
+::: {.slide data-auto-animate="true"}
+### Bound (Otto)
+<div data-id="eta">
+$$
+\eta \le 1 - \frac{\omega_c}{\omega_h}
+$$
+</div>
+:::
+
+---
+
+## Minimal numerics (static figure)
+
+::: {.slide data-auto-animate="true"}
+### Parameter sweep (precomputed)
+![](figs/efficiency_sweep.png){width=80%}
+<div class="fragment">
+Keep live eval minimal; rely on static plots to avoid demo risk.
+</div>
+:::
+
+---
+
+## Appendix: Tips
+
+- Keep **IDs stable** across slides for elements you want to morph (`data-id="..."`).
+- Prefer **SVG** for diagram morphs.
+- Use **fragments** (`.fragment`) for staged reveals inside an auto-animate slide.
+- Test **fonts** and **equation sizing** on the actual projector.
+
+---
+
+## Backup slide (no auto-animate)
+
+### Questions?
+Notes:
+- If time is short, jump here directly.
